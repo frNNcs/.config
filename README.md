@@ -1,12 +1,14 @@
 # Configuration repo
 
 ## Install zsh
-```
+``` bash
 # linux
 sudo apt-get install zsh
 
 # Macos
 brew install zsh
+
+# ln -s ~/.config/.zshrc ~/ .zshrc
 ```
 
 ## Install OhmyZsh
