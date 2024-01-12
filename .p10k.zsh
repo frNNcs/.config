@@ -32,7 +32,6 @@
     nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
     nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
     newline                 # \n
-    newline                 # \n
     prompt_char             # prompt symbol
   )
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
@@ -93,10 +92,10 @@
     per_directory_history   # Oh My Zsh per-directory-history local/global indicator
     # cpu_arch              # CPU architecture
     # =========================[ Line #2 ]=========================
-    newline
-    ip                      # ip address and bandwidth usage for a specified network interface
-    public_ip               # public IP address
-    newline                 # \n
+    # newline
+    # ip                      # ip address and bandwidth usage for a specified network interface
+    # public_ip               # public IP address
+    # newline                 # \n
     time                    # current time
     battery                 # internal battery
     newline                 # \n
