@@ -8,6 +8,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 CASE_SENSITIVE="false"
 
 plugins=(
+  docker
+  docker-compose
+  zsh-completions
   git
   nvm
   virtualenv
@@ -16,6 +19,9 @@ plugins=(
 # Ohmyzsh plugins and settings
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
+
+# zsh-completions
+autoload -U compinit && compinit
 
 # Python version manager
 export PYENV_ROOT="$HOME/.pyenv"

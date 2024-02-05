@@ -8,12 +8,13 @@ sudo apt-get install zsh
 # Macos
 brew install zsh
 
-# ln -s ~/.config/.zshrc ~/ .zshrc
+# ln -s ~/.config/.zshrc ~/.zshrc
 ```
 
 ## Install OhmyZsh
 ```bash
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+ln -s ~/.config/.oh-my-zsh-custom /home/frnn/.oh-my-zsh/custom
 ```
 
 
