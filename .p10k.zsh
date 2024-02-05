@@ -25,10 +25,9 @@
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
-    newline                 # \n
-    pyenv                   # python environment (https://github.com/pyenv/pyenv)
+    # pyenv                   # python environment (https://github.com/pyenv/pyenv)
     # nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
-    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
+    # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
     nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
     newline                 # \n
@@ -98,7 +97,7 @@
     # newline                 # \n
     time                    # current time
     battery                 # internal battery
-    newline                 # \n
+    # newline                 # \n
     # proxy                 # system-wide http/https/ftp proxy
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
