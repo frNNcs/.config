@@ -14,7 +14,7 @@ brew install zsh
 ## Install OhmyZsh
 ```bash
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-ln -s ~/.config/.oh-my-zsh-custom /home/frnn/.oh-my-zsh/custom
+# ln -s ~/.config/.oh-my-zsh-custom /home/frnn/.oh-my-zsh/custom
 ```
 
 
@@ -22,6 +22,8 @@ ln -s ~/.config/.oh-my-zsh-custom /home/frnn/.oh-my-zsh/custom
 
 ``` bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+# ln -s ~/.config/.p10k.zsh ~/.p10k.zsh
+
 ```
 
 ## Pyenv
