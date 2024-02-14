@@ -25,10 +25,9 @@
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
-    newline                 # \n
-    pyenv                   # python environment (https://github.com/pyenv/pyenv)
+    # pyenv                   # python environment (https://github.com/pyenv/pyenv)
     # nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
-    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
+    # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
     nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
     newline                 # \n
@@ -98,7 +97,7 @@
     # newline                 # \n
     time                    # current time
     battery                 # internal battery
-    newline                 # \n
+    # newline                 # \n
     # proxy                 # system-wide http/https/ftp proxy
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
@@ -1733,10 +1732,10 @@
 
   ####################################[ time: current time ]####################################
   # Current time color.
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=007
-  typeset -g POWERLEVEL9K_TIME_BACKGROUND=207
+  typeset -g POWERLEVEL9K_TIME_FOREGROUND=016
+  typeset -g POWERLEVEL9K_TIME_BACKGROUND=013
   # Format for the current time: 09:51:02. See `man 3 strftime`.
-  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%I:%M:%S %p}'
+  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%I:%M}'
   # If set to true, time will update when you hit enter. This way prompts for the past
   # commands will contain the start times of their commands as opposed to the default
   # behavior where they contain the end times of their preceding commands.
