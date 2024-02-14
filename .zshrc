@@ -10,10 +10,12 @@ CASE_SENSITIVE="false"
 plugins=(
   docker
   docker-compose
-  zsh-completions
   git
   nvm
   virtualenv
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 # Ohmyzsh plugins and settings
@@ -34,4 +36,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
