@@ -2,6 +2,9 @@
 raycast/extensions
 raycast/config.json
 iterm2/AppSupport
+zed/.tmp*
+zed/embeddings
+*.DS_Store
 
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node

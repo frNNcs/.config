@@ -2,121 +2,122 @@
   "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5",
   "schemes" : [
     {
-      "buttons" : {
-        "universalBackForward" : true
-      },
-      "if" : {
-        "device" : {
-          "productID" : "0xc08b",
-          "productName" : "G502 HERO Gaming Mouse",
-          "serialNumber" : "1177386A3234",
-          "category" : "mouse",
-          "vendorID" : "0x46d"
-        }
-      },
       "pointer" : {
         "disableAcceleration" : true
       },
       "scrolling" : {
+        "acceleration" : 1,
+        "speed" : 0,
         "reverse" : {
-          "vertical" : true,
-          "horizontal" : false
+          "horizontal" : false,
+          "vertical" : true
         },
         "distance" : {
-          "vertical" : "12.5px",
-          "horizontal" : 3
-        },
-        "acceleration" : 1,
-        "speed" : 0
+          "horizontal" : 3,
+          "vertical" : "12.5px"
+        }
+      },
+      "if" : {
+        "device" : {
+          "productName" : "G502 HERO Gaming Mouse",
+          "serialNumber" : "1177386A3234",
+          "category" : "mouse",
+          "vendorID" : "0x46d",
+          "productID" : "0xc08b"
+        }
+      },
+      "buttons" : {
+        "universalBackForward" : true
       }
     },
     {
-      "pointer" : {
-        "disableAcceleration" : false,
-        "speed" : 0.5
+      "if" : {
+        "device" : {
+          "productID" : "0xc547",
+          "productName" : "USB Receiver",
+          "category" : "mouse",
+          "vendorID" : "0x46d"
+        }
       },
       "buttons" : {
         "universalBackForward" : true
       },
+      "pointer" : {
+        "disableAcceleration" : true,
+        "speed" : 0.722,
+        "acceleration" : 2
+      },
       "scrolling" : {
-        "acceleration" : {
-          "vertical" : 1
+        "reverse" : {
+          "vertical" : true
         },
         "distance" : {
           "vertical" : 1
         },
-        "reverse" : {
-          "vertical" : true
+        "acceleration" : {
+          "vertical" : 1
         },
         "speed" : {
           "vertical" : 0
         }
-      },
-      "if" : {
-        "device" : {
-          "productID" : "0xc547",
-          "category" : "mouse",
-          "productName" : "USB Receiver",
-          "vendorID" : "0x46d"
-        }
       }
     },
     {
       "if" : {
         "device" : {
-          "productName" : "PRO X Wireless",
-          "productID" : "0xc094",
           "serialNumber" : "106AE6CB",
-          "category" : "mouse",
-          "vendorID" : "0x46d"
+          "vendorID" : "0x46d",
+          "productID" : "0xc094",
+          "productName" : "PRO X Wireless",
+          "category" : "mouse"
         }
       },
       "buttons" : {
-        "universalBackForward" : true,
         "mappings" : [
 
-        ]
+        ],
+        "universalBackForward" : true
       }
     },
     {
-      "if" : {
-        "app" : "com.google.Chrome",
-        "device" : {
-          "vendorID" : "0x46d",
-          "productName" : "PRO X Wireless",
-          "productID" : "0xc094",
-          "category" : "mouse",
-          "serialNumber" : "106AE6CB"
-        }
-      },
       "buttons" : {
         "mappings" : [
           {
             "control" : false,
-            "command" : false,
             "shift" : false,
+            "action" : "smartZoom",
+            "command" : false,
             "button" : 2,
-            "option" : false,
-            "action" : "smartZoom"
+            "option" : false
           }
         ]
+      },
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productName" : "PRO X Wireless",
+          "vendorID" : "0x46d",
+          "productID" : "0xc094",
+          "serialNumber" : "106AE6CB"
+        },
+        "app" : "com.google.Chrome"
       }
     },
     {
-      "if" : {
-        "device" : {
-          "productName" : "PRO X Wireless",
-          "productID" : "0xc094",
-          "vendorID" : "0x46d",
-          "serialNumber" : "106AE6CB",
-          "category" : "mouse"
-        },
-        "app" : "com.epicgames.EpicGamesLauncher"
-      },
       "scrolling" : {
         "reverse" : {
           "vertical" : false
         }
+      },
+      "if" : {
+        "device" : {
+          "serialNumber" : "106AE6CB",
+          "productID" : "0xc094",
+          "vendorID" : "0x46d",
+          "productName" : "PRO X Wireless",
+          "category" : "mouse"
+        },
+        "app" : "com.epicgames.EpicGamesLauncher"
       }
     }
   ]
