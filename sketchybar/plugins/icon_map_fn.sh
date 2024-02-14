@@ -220,7 +220,7 @@ function icon_map() {
   "Music" | "音乐")
     icon_result=":music:"
     ;;
-  "Calendar" | "日历" | "Fantastical" | "Cron" | "Amie")
+  "Calendar"| "Calendario" | "日历" | "Fantastical" | "Cron" | "Amie")
     icon_result=":calendar:"
     ;;
   "Evernote Legacy")
@@ -421,7 +421,7 @@ function icon_map() {
   "Nova")
     icon_result=":nova:"
     ;;
-  "WhatsApp")
+  "WhatsApp" | "WhatsApp Desktop" | "Whats App" | "WhatsApp (Geral)")
     icon_result=":whats_app:"
     ;;
   *)
