@@ -8,7 +8,8 @@ sudo apt-get install zsh
 # Macos
 brew install zsh
 
-# ln -s ~/.config/.zshrc ~/ .zshrc
+# ln -s ~/.config/.zshrc ~/.zshrc
+# ln -s ~/.config/.p10k.zsh ~/.p10k.zsh
 ```
 
 ## Install OhmyZsh
