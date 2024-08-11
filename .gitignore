@@ -1,6 +1,7 @@
 # Personal
 raycast/extensions
 raycast/config.json
+raycast/Raycast*.rayconfig
 iterm2/AppSupport
 zed/.tmp*
 zed/embeddings

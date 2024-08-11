@@ -37,3 +37,8 @@ yabai -m rule --add app="^Asistente Configuración Teclado$" manage=off
 yabai -m rule --add app="^LinearMouse$" manage=off
 yabai -m rule --add app="^Docker Desktop$" manage=off
 yabai -m rule --add app="^Acceso: Cuentas de Google$" manage=off
+yabai -m rule --add app="^Monitor de Actividad$" manage=off
+yabai -m rule --add app="^Raycast Settings$" manage=off
+yabai -m rule --add app="^Raycast$" manage=off
+yabai -m rule --add app="^Google Drive$" manage=off
+yabai -m rule --add app="^ColorSlurp$" manage=off

@@ -10,7 +10,7 @@ alt - l : yabai -m window --focus east
 alt - s: yabai -m display --focus west
 alt - g: yabai -m display --focus east
 
-# -- Modifying the Layout --
+# -- Modifying the Layout --33
 
 # rotate layout clockwise
 shift + alt - r : yabai -m space --rotate 270
@@ -56,7 +56,7 @@ shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
 shift + alt - p : yabai -m window --space prev;
 shift + alt - n : yabai -m window --space next;
 
-# move window to space #
+# move window to space #£
 shift + alt - 1 : yabai -m window --space 1;
 shift + alt - 2 : yabai -m window --space 2;
 shift + alt - 3 : yabai -m window --space 3;
