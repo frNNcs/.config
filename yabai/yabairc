@@ -37,41 +37,64 @@ yabai -m rule --add app="^Google Drive$" manage=off
 yabai -m rule --add app="^ColorSlurp$" manage=off
 
 # -- Multi-Display Padding Configuration --
-# Configuración fija por display (sin automatización)
+# Configuración optimizada para mejor rendimiento
 
 # Configuración global por defecto
 yabai -m config window_gap 12
 
-# Display 1 (Laptop) - Espacios 1-5
-# Padding personalizado: top=46, others=12
-yabai -m config --space 1 top_padding 46
-yabai -m config --space 1 bottom_padding 12
-yabai -m config --space 1 left_padding 12
-yabai -m config --space 1 right_padding 12
+# Configuración de padding base para todos los espacios
+yabai -m config top_padding 12
+yabai -m config bottom_padding 12
+yabai -m config left_padding 12
+yabai -m config right_padding 12
 
-yabai -m config --space 2 top_padding 46
-yabai -m config --space 2 bottom_padding 12
-yabai -m config --space 2 left_padding 12
-yabai -m config --space 2 right_padding 12
+# Función optimizada para configurar padding dinámicamente
+setup_padding() {
+    local display_count=$(yabai -m query --displays | jq -r 'length')
 
-yabai -m config --space 3 top_padding 46
-yabai -m config --space 3 bottom_padding 12
-yabai -m config --space 3 left_padding 12
-yabai -m config --space 3 right_padding 12
+    # Cache del estado actual para evitar reconfiguración innecesaria
+    local current_state_file="$HOME/.config/yabai/.display_state"
+    local new_state="displays:$display_count"
 
-yabai -m config --space 4 top_padding 46
-yabai -m config --space 4 bottom_padding 12
-yabai -m config --space 4 left_padding 12
-yabai -m config --space 4 right_padding 12
+    # Verificar si ya está configurado correctamente
+    if [ -f "$current_state_file" ] && [ "$(cat "$current_state_file")" = "$new_state" ]; then
+        return 0
+    fi
 
-yabai -m config --space 5 top_padding 46
-yabai -m config --space 5 bottom_padding 12
-yabai -m config --space 5 left_padding 12
-yabai -m config --space 5 right_padding 12
+    if [ "$display_count" -gt 1 ]; then
+        # Solo configurar espacios que necesitan cambios (1-5 con top_padding diferente)
+        # Usar un solo comando para múltiples espacios cuando sea posible
+        yabai -m config --space 1 top_padding 46
+        yabai -m config --space 2 top_padding 46
+        yabai -m config --space 3 top_padding 46
+        yabai -m config --space 4 top_padding 46
+        yabai -m config --space 5 top_padding 46
+        # El espacio 6 ya tiene la configuración correcta (12) por defecto
+    else
+        # Resetear solo los espacios que podrían haber cambiado (1-5)
+        yabai -m config --space 1 top_padding 12
+        yabai -m config --space 2 top_padding 12
+        yabai -m config --space 3 top_padding 12
+        yabai -m config --space 4 top_padding 12
+        yabai -m config --space 5 top_padding 12
+    fi
 
-# Display 2 (Monitor externo) - Espacio 6
-# Padding menor para aprovechar mejor el espacio
-yabai -m config --space 6 top_padding 12
-yabai -m config --space 6 bottom_padding 12
-yabai -m config --space 6 left_padding 12
-yabai -m config --space 6 right_padding 12
+    # Guardar el estado actual
+    echo "$new_state" > "$current_state_file"
+}
+
+# Configurar padding inicial
+setup_padding
+
+# Script optimizado para cambios de display
+cat > "$HOME/.config/yabai/display_handler.sh" << 'EOF'
+#!/bin/bash
+# Solo reconfigurar padding, evitar restart completo
+source "$HOME/.config/yabai/yabairc"
+setup_padding
+EOF
+chmod +x "$HOME/.config/yabai/display_handler.sh"
+
+# Configurar eventos optimizados (sin restart completo)
+yabai -m signal --add event=display_added action="$HOME/.config/yabai/display_handler.sh"
+yabai -m signal --add event=display_removed action="$HOME/.config/yabai/display_handler.sh"
