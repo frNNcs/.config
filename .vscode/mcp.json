@@ -1,0 +1,22 @@
+// .vscode/mcp.json
+{
+    "servers": {
+        "obsidian": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "-e",
+                "OBSIDIAN_HOST",
+                "-e",
+                "OBSIDIAN_API_KEY",
+                "mcp/obsidian"
+            ],
+            "env": {
+                "OBSIDIAN_HOST": "host.docker.internal",
+                "OBSIDIAN_API_KEY": "89e2442dc80d2af36e4acbe1007498e967f26ce36e38361fdb0f73b1fc48db58"
+            }
+        }
+    }
+}

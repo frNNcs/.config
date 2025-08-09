@@ -34,3 +34,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+
+. "$HOME/.local/bin/env"
+alias spicetify-fix="~/.config/spicetify/auto-apply.sh"

@@ -1,108 +1,123 @@
 {
-  "schemes": [
+  "schemes" : [
     {
-      "pointer": {
-        "acceleration": 2,
-        "speed": 0.722,
-        "disableAcceleration": true
+      "buttons" : {
+        "universalBackForward" : true
       },
-      "if": {
-        "device": {
-          "vendorID": "0x46d",
-          "productName": "USB Receiver",
-          "productID": "0xc547",
-          "category": "mouse"
+      "pointer" : {
+        "acceleration" : 2,
+        "disableAcceleration" : true,
+        "speed" : 0.722
+      },
+      "scrolling" : {
+        "distance" : {
+          "vertical" : 1
+        },
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "reverse" : {
+          "vertical" : true
+        },
+        "speed" : {
+          "vertical" : 0
         }
       },
-      "scrolling": {
-        "distance": {
-          "vertical": 1
-        },
-        "reverse": {
-          "vertical": true
-        },
-        "acceleration": {
-          "vertical": 1
-        },
-        "speed": {
-          "vertical": 0
-        }
-      },
-      "buttons": {
-        "universalBackForward": true
-      }
-    },
-    {
-      "buttons": {
-        "mappings": [],
-        "universalBackForward": true
-      },
-      "if": {
-        "device": {
-          "category": "mouse",
-          "productID": "0xc094",
-          "serialNumber": "106AE6CB",
-          "productName": "PRO X Wireless",
-          "vendorID": "0x46d"
+      "if" : {
+        "device" : {
+          "productName" : "USB Receiver",
+          "productID" : "0xc547",
+          "vendorID" : "0x46d",
+          "category" : "mouse"
         }
       }
     },
     {
-      "buttons": {
-        "mappings": [
+      "buttons" : {
+        "universalBackForward" : true,
+        "mappings" : [
+
+        ]
+      },
+      "pointer" : {
+        "disableAcceleration" : true,
+        "speed" : 0.0689655172413792768,
+        "acceleration" : 1.5
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x46d",
+          "productID" : "0xc094",
+          "productName" : "PRO X Wireless",
+          "serialNumber" : "106AE6CB",
+          "category" : "mouse"
+        }
+      }
+    },
+    {
+      "buttons" : {
+        "mappings" : [
           {
-            "command": false,
-            "option": false,
-            "control": false,
-            "action": "smartZoom",
-            "shift": false,
-            "button": 2
+            "command" : false,
+            "shift" : false,
+            "option" : false,
+            "control" : false,
+            "action" : "smartZoom",
+            "button" : 2
           }
         ]
       },
-      "if": {
-        "app": "com.google.Chrome",
-        "device": {
-          "serialNumber": "106AE6CB",
-          "productName": "PRO X Wireless",
-          "category": "mouse",
-          "productID": "0xc094",
-          "vendorID": "0x46d"
-        }
-      }
-    },
-    {
-      "if": {
-        "device": {
-          "productID": "0xc094",
-          "vendorID": "0x46d",
-          "productName": "PRO X Wireless",
-          "serialNumber": "106AE6CB",
-          "category": "mouse"
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productName" : "PRO X Wireless",
+          "productID" : "0xc094",
+          "serialNumber" : "106AE6CB",
+          "vendorID" : "0x46d"
         },
-        "app": "com.epicgames.EpicGamesLauncher"
+        "app" : "com.google.Chrome"
+      }
+    },
+    {
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : false
+        }
       },
-      "scrolling": {
-        "reverse": {
-          "vertical": false
+      "if" : {
+        "app" : "com.epicgames.EpicGamesLauncher",
+        "device" : {
+          "productID" : "0xc094",
+          "serialNumber" : "106AE6CB",
+          "category" : "mouse",
+          "productName" : "PRO X Wireless",
+          "vendorID" : "0x46d"
         }
       }
     },
     {
-      "scrolling": {
-        "acceleration": {
-          "vertical": 1
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
         }
       },
-      "if": {
-        "device": {
-          "vendorID": "0x5ac",
-          "productID": "0x341",
-          "productName": "Apple Internal Keyboard / Trackpad",
-          "category": "trackpad"
+      "if" : {
+        "device" : {
+          "category" : "trackpad",
+          "productName" : "Apple Internal Keyboard \/ Trackpad",
+          "productID" : "0x341",
+          "vendorID" : "0x5ac"
         }
       }
     }
   ],
-  "$schema": "https://schema.linearmouse.app/0.9.5"
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
 }

@@ -4,13 +4,6 @@ yabai -m config layout bsp
 # new window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
 
-# padding set to 12px
-yabai -m config top_padding 46
-yabai -m config bottom_padding 12
-yabai -m config left_padding 12
-yabai -m config right_padding 12
-yabai -m config window_gap 12
-
 # -- mouse settings --
 
 # center mouse on window with focus
@@ -42,3 +35,43 @@ yabai -m rule --add app="^Raycast Settings$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add app="^Google Drive$" manage=off
 yabai -m rule --add app="^ColorSlurp$" manage=off
+
+# -- Multi-Display Padding Configuration --
+# Configuración fija por display (sin automatización)
+
+# Configuración global por defecto
+yabai -m config window_gap 12
+
+# Display 1 (Laptop) - Espacios 1-5
+# Padding personalizado: top=46, others=12
+yabai -m config --space 1 top_padding 46
+yabai -m config --space 1 bottom_padding 12
+yabai -m config --space 1 left_padding 12
+yabai -m config --space 1 right_padding 12
+
+yabai -m config --space 2 top_padding 46
+yabai -m config --space 2 bottom_padding 12
+yabai -m config --space 2 left_padding 12
+yabai -m config --space 2 right_padding 12
+
+yabai -m config --space 3 top_padding 46
+yabai -m config --space 3 bottom_padding 12
+yabai -m config --space 3 left_padding 12
+yabai -m config --space 3 right_padding 12
+
+yabai -m config --space 4 top_padding 46
+yabai -m config --space 4 bottom_padding 12
+yabai -m config --space 4 left_padding 12
+yabai -m config --space 4 right_padding 12
+
+yabai -m config --space 5 top_padding 46
+yabai -m config --space 5 bottom_padding 12
+yabai -m config --space 5 left_padding 12
+yabai -m config --space 5 right_padding 12
+
+# Display 2 (Monitor externo) - Espacio 6
+# Padding menor para aprovechar mejor el espacio
+yabai -m config --space 6 top_padding 12
+yabai -m config --space 6 bottom_padding 12
+yabai -m config --space 6 left_padding 12
+yabai -m config --space 6 right_padding 12
