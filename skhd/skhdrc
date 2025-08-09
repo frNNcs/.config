@@ -10,7 +10,7 @@ alt - l : yabai -m window --focus east
 alt - s: yabai -m display --focus west
 alt - g: yabai -m display --focus east
 
-# -- Modifying the Layout --33
+# -- Modifying the Layout --
 
 # rotate layout clockwise
 shift + alt - r : yabai -m space --rotate 270
@@ -48,6 +48,7 @@ ctrl + alt - h : yabai -m window --warp west
 ctrl + alt - l : yabai -m window --warp east
 
 # move window to display left and right
+# Nota: Solo funcionan si tienes múltiples displays conectados
 shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
 shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
 
@@ -56,7 +57,7 @@ shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
 shift + alt - p : yabai -m window --space prev;
 shift + alt - n : yabai -m window --space next;
 
-# move window to space #£
+# move window to space # - TODOS LOS NÚMEROS DISPONIBLES
 shift + alt - 1 : yabai -m window --space 1;
 shift + alt - 2 : yabai -m window --space 2;
 shift + alt - 3 : yabai -m window --space 3;
@@ -67,7 +68,18 @@ shift + alt - 7 : yabai -m window --space 7;
 
 # -- Starting/Stopping/Restarting Yabai --
 
-# stop/start/restart yabai
-ctrl + alt - q : brew services stop yabai
-ctrl + alt - s : brew services start yabai
-ctrl + alt - r : brew services restart yabai
+# stop/start/restart yabai (usando comandos nativos)
+ctrl + alt - q : yabai --stop-service
+ctrl + alt - s : yabai --start-service
+ctrl + alt - r : yabai --restart-service
+ctrl + cmd - q : yabai --stop-service
+ctrl + cmd - s : yabai --start-service
+ctrl + cmd - r : yabai --restart-service
+
+# -- Quick Padding Configuration Switch --
+
+# recargar configuración de yabai (aplica padding fijo por display)
+ctrl + alt - r : yabai --restart-service
+
+# toggle padding para el espacio actual
+ctrl + alt - p : yabai -m space --toggle padding
