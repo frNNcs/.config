@@ -35,6 +35,11 @@ setup_padding() {
             for space in $spaces; do
                 yabai -m config --space $space top_padding $padding 2>/dev/null || true
             done
+            
+            # Para el display principal, actualizar también la configuración global
+            if [ "$display_id" = "1" ] || [ "$display_id" = "$(yabai -m query --displays | jq -r '.[] | select(.["has-focus"] == true) | .id')" ]; then
+                yabai -m config top_padding $padding
+            fi
         done
     elif [ "$display_count" -eq 1 ]; then
         # Un solo display: detectar tipo y configurar todos los espacios
@@ -52,7 +57,12 @@ setup_padding() {
             padding=46
         fi
         
-        # Aplicar a todos los espacios existentes
+        # Aplicar configuración global y a todos los espacios existentes
+        yabai -m config top_padding $padding
+        yabai -m config bottom_padding 12
+        yabai -m config left_padding 12
+        yabai -m config right_padding 12
+        
         yabai -m query --spaces | jq -r '.[].index' | while read space; do
             yabai -m config --space $space top_padding $padding 2>/dev/null || true
         done

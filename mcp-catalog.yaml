@@ -1,0 +1,32 @@
+version: 2
+name: custom-catalog
+registry:
+  # Servidor Playwright local funcionando
+  local-playwright:
+    description: "Local Playwright MCP server with browser automation"
+    title: "Local Playwright Server"
+    type: server
+    image: mcr.microsoft.com/playwright:v1.40.0-focal
+    args:
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "8080"
+    capabilities:
+      - browser
+      - screenshot
+      - scraping
+      - automation
+    
+  # Gateway MCP local completo
+  local-mcp-gateway:
+    description: "Local MCP Gateway with multiple tools (Playwright, Web Scraper, File System)"
+    title: "Local MCP Gateway"
+    type: gateway
+    endpoint: "http://localhost:3000"
+    capabilities:
+      - browser
+      - screenshot
+      - web_search
+      - file_operations
+      - scraping

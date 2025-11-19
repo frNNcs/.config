@@ -1,0 +1,67 @@
+# Catppuccin Mocha palette for lsd
+# This file applies Catppuccin (mocha) hex colors to lsd theme entries.
+# You can tune specific keys below, or remove fallback values as needed.
+
+user: "#cdd6f4"       # text
+group: "#bac2de"      # subtext1
+
+permission:
+  read: "#a6e3a1"      # green
+  write: "#f9e2af"     # yellow
+  exec: "#a6e3a1"      # green
+  exec-sticky: "#74c7ec"
+
+no-access: "#f38ba8"   # red/muted
+octal: "#6c7086"
+acl: "#94e2d5"         # teal
+context: "#94e2d5"
+
+date:
+  hour-old: "#b4befe"  # lavender
+  day-old: "#bac2de"   # subtext1
+  older: "#7f849c"     # overlay1
+
+size:
+  none: "#a6adc8"
+  small: "#bac2de"
+  medium: "#cdd6f4"
+  large: "#fab387"
+
+inode:
+  valid: "#cba6f7"     # mauve
+  invalid: "#6c7086"
+
+links:
+  valid: "#a6e3a1"
+  invalid: "#6c7086"
+
+tree-edge: "#6c7086"
+
+git-status:
+  default: "#a6adc8"
+  unmodified: "#a6adc8"
+  ignored: "#585b70"
+  new-in-index: "#a6e3a1"
+  new-in-workdir: "#a6e3a1"
+  typechange: "#f9e2af"
+  deleted: "#f38ba8"
+  renamed: "#a6e3a1"
+  modified: "#f9e2af"
+  conflicted: "#f38ba8"
+
+# File type colors: lsd primarily reads file types from LS_COLORS, but
+# some GUI elements use these properties; keep them here for completeness.
+file-types:
+  dir: "#89b4fa"               # blue
+  symlink-file: "#cba6f7"      # mauve
+  symlink-dir: "#cba6f7"       # mauve
+  executable: "#a6e3a1"        # green
+  non-executable: "#cdd6f4"    # text
+  pipe: "#94e2d5"              # teal
+  socket: "#94e2d5"            # teal
+  char-device: "#fab387"       # peach
+  block-device: "#fab387"      # peach
+  archive: "#fab387"           # peach
+  compressed: "#fab387"        # peach
+  broken-symlink: "#f38ba8"    # red
+  unusual: "#eba0ac"           # maroon (no access / odd)

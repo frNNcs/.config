@@ -38,3 +38,34 @@ export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 
 . "$HOME/.local/bin/env"
 alias spicetify-fix="~/.config/spicetify/auto-apply.sh"
+export PATH="$HOME/economia-funciones-env/bin:$PATH"
+
+# bun completions
+[ -s "/Users/francisco/.bun/_bun" ] && source "/Users/francisco/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Added by Antigravity
+export PATH="/Users/francisco/.antigravity/antigravity/bin:$PATH"
+
+# Aliases and Atuin initialization
+# === Added by install-tools.sh: lsd, bat and atuin ===
+if command -v lsd >/dev/null 2>&1; then
+    alias ls='lsd'
+fi
+if command -v bat >/dev/null 2>&1; then
+    alias cat='bat --paging=never --style=plain'
+fi
+if command -v atuin >/dev/null 2>&1; then
+    eval "$(atuin init zsh)"
+fi
+# === End of block ===
+# === Catppuccin Mocha LS_COLORS ===
+export LS_COLORS="di=38;2;137;180;250:ex=38;2;166;227;161:ln=38;2;203;166;247:ln=38;2;203;166;247:pi=38;2;148;226;213:so=38;2;148;226;213:cd=38;2;250;179;135:bd=38;2;250;179;135:or=38;2;243;139;168:no=38;2;235;160;172:di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+# === End Catppuccin LS_COLORS ===
