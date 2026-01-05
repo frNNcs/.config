@@ -56,10 +56,10 @@ export PATH="/Users/francisco/.antigravity/antigravity/bin:$PATH"
 
 # Aliases and Atuin initialization
 # === Added by install-tools.sh: lsd, bat and atuin ===
-if command -v lsd >/dev/null 2>&1;
+if command -v lsd >/dev/null 2>&1; then
     alias ls='lsd'
 fi
-if command -v bat >/dev/null 2>&1;
+if command -v bat >/dev/null 2>&1; then
     alias cat='bat --paging=never --style=plain'
 fi
 if command -v atuin >/dev/null 2>&1;
