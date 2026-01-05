@@ -62,7 +62,7 @@ fi
 if command -v bat >/dev/null 2>&1; then
     alias cat='bat --paging=never --style=plain'
 fi
-if command -v atuin >/dev/null 2>&1;
+if command -v atuin >/dev/null 2>&1; then
     eval "$(atuin init zsh)"
 fi
 # === End of block ===
@@ -72,7 +72,7 @@ export LS_COLORS="di=38;2;137;180;250:ex=38;2;166;227;161:ln=38;2;203;166;247:ln
 export PATH="$HOME/bin:$PATH"
 
 # Homebrew names the binary `fabric-ai`. Provide a compatibility alias so `fabric` works as in the docs.
-if command -v fabric-ai >/dev/null 2>&1;
+if command -v fabric-ai >/dev/null 2>&1; then
     alias fabric='fabric-ai'
 fi
 
