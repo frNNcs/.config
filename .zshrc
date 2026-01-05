@@ -1,3 +1,15 @@
+# === TMUX Configuration & Auto-start ===
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
+alias tmux="tmux -f $TMUX_CONFIG"
+
+# Auto-start tmux if not already inside one, and if it's an interactive shell
+if [[ -z "$TMUX" ]] && [[ -n "$PS1" ]] && [[ -t 0 ]]; then
+    # Try to attach to session 'main', or create it if it doesn't exist
+    tmux -f "$TMUX_CONFIG" attach-session -t main 2>/dev/null || \
+    tmux -f "$TMUX_CONFIG" new-session -s main
+fi
+
 # Powerlevel10k
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -91,15 +103,3 @@ export OPENAI_API_BASE="http://192.168.1.80:11434/v1"
 
 # opencode
 export PATH=/Users/francisco/.opencode/bin:$PATH
-
-# === TMUX Configuration & Auto-start ===
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-export TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
-alias tmux="tmux -f $TMUX_CONFIG"
-
-# Auto-start tmux if not already inside one, and if it's an interactive shell
-if [[ -z "$TMUX" ]] && [[ -n "$PS1" ]]; then
-    # Try to attach to session 'main', or create it if it doesn't exist
-    tmux -f "$TMUX_CONFIG" attach-session -t main 2>/dev/null || \
-    tmux -f "$TMUX_CONFIG" new-session -s main
-fi
