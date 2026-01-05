@@ -2,3 +2,8 @@
 *.log
 raycast/extensions/*
 raycast/config.json
+*.db
+*.db-*
+# Tmux Plugins
+tmux/plugins/*
+!tmux/plugins/tpm/
