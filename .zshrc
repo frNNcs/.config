@@ -10,12 +10,15 @@ if [[ -z "$TMUX" ]] && [[ -n "$PS1" ]] && [[ -t 0 ]]; then
     tmux -f "$TMUX_CONFIG" new-session -s main
 fi
 
-# Powerlevel10k
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-ZSH_THEME="powerlevel10k/powerlevel10k"
-[[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
+# Powerlevel10k (Disabled for Unified Retro Rosé Pine Prompt)
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+# [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
+
+# Clean Unified Rosé Pine Parallelogram Prompt
+PROMPT='%F{#eb6f92}%K{#eb6f92}%F{#191724} %n %k%F{#eb6f92}%K{#31748f}%k%F{#31748f}%K{#31748f}%F{#e0def4} %~ %k%F{#31748f}%K{#f6c177}%k%F{#f6c177}%K{#f6c177}%F{#191724} %{\e[5m%}󰊠%{\e[25m%} %k%F{#f6c177}%f '
 
 CASE_SENSITIVE="false"
 
@@ -48,7 +51,12 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 
-. "$HOME/.local/bin/env"
+# Load user environment variables from dotfiles-managed location, fallback to $HOME/.local/bin/env
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/local/bin/env" ]; then
+    . "${XDG_CONFIG_HOME:-$HOME/.config}/local/bin/env"
+elif [ -f "$HOME/.local/bin/env" ]; then
+    . "$HOME/.local/bin/env"
+fi
 alias spicetify-fix="~/.config/spicetify/auto-apply.sh"
 export PATH="$HOME/economia-funciones-env/bin:$PATH"
 
@@ -103,3 +111,28 @@ export OPENAI_API_BASE="http://192.168.1.80:11434/v1"
 
 # opencode
 export PATH=/Users/francisco/.opencode/bin:$PATH
+
+# Scripts aliases
+alias cheatsheet="~/.config/scripts/cheatsheet.sh"
+alias apply-lscolors="~/.config/scripts/apply-catppuccin-lscolors.sh"
+alias test-tools="~/.config/scripts/test-install.sh"
+
+# User-specific aliases
+# Alias para la bóveda de Obsidian
+alias vault='cd ~/projects/homelab/DATA/syncthing/obsidian'
+
+# Set custom GH config dir for unified Copilot CLI config
+export GH_CONFIG_DIR="$HOME/.config/gh-unified"
+
+# Alias to launch VS Code with local .config data directory
+alias code="code --user-data-dir=\"$HOME/.config/vscode-data\""
+
+# MCPHost configuration
+export MCPHOST_CONFIG="$HOME/.config/mcphost/.mcphost.json"
+export PATH="$HOME/go/bin:$PATH"
+
+# Load MCPHost environment variables
+if [ -f ~/.config/mcphost/.env.local ]; then
+    export $(cat ~/.config/mcphost/.env.local | grep -v '^#' | xargs)
+fi
+alias mcphost="mcphost --config ~/.config/mcphost/.mcphost.json -m ollama:granite4:7b-a1b-h --save-session ./my-session-\$(date +%s).json --compact --quiet"

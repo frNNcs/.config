@@ -1,0 +1,1 @@
+/Users/francisco/.config/opencode/opencode-agent-memory/src/plugin.ts

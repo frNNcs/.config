@@ -1,3 +1,4 @@
 TigerVNC Configuration file Version 1.0
 
-ServerName=192.168.1.70:5900
+ServerName=192.168.1.70:5901
+SecurityTypes=None,VncAuth,RA2ne,RA2ne_256,Plain,DH,MSLogonII,TLSNone,TLSVnc,TLSPlain,X509None,X509Vnc,X509Plain,RA2,RA2_256

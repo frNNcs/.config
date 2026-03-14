@@ -1,0 +1,74 @@
+# MCPHost Configuration - All MCP Servers
+# Location: /Users/francisco/.config/mcphost/.mcphost.yml
+
+# Default model (can be overridden with --model flag)
+model: "ollama:granite4:7b-a1b-h"
+
+# Generation parameters
+max-tokens: 8192
+temperature: 0.7
+stream: true
+
+mcpServers:
+  # ============================================================
+  # LOCAL MCP SERVERS (external processes)
+  # ============================================================
+
+  # Obsidian - Access your Obsidian vault
+  obsidian:
+    command: uv
+    args:
+      - "--directory"
+      - "/Users/francisco/projects/mcp/obsidian-mcp"
+      - "run"
+      - "mcp-obsidian"
+
+  # Markitdown - Convert URLs/files to markdown
+  markitdown:
+    command: uv
+    args:
+      - "--directory"
+      - "/Users/francisco/projects/mcp/markitdown/packages/markitdown-mcp"
+      - "run"
+      - "markitdown-mcp"
+    env:
+      MARKITDOWN_ENABLE_PLUGINS: "false"
+
+  # Playwright - Browser automation
+  playwright:
+    command: npx
+    args:
+      - "@playwright/mcp@latest"
+      - "--extension"
+    env:
+      PLAYWRIGHT_MCP_EXTENSION_TOKEN: "${env://PLAYWRIGHT_MCP_EXTENSION_TOKEN}"
+
+  # Excalidraw - Diagram creation (requires local server running)
+  excalidraw:
+    command: node
+    args:
+      - "dist/index.js"
+    cwd: "/Users/francisco/projects/mcp/excalidraw-mcp"
+    env:
+      EXPRESS_SERVER_URL: "${env://EXPRESS_SERVER_URL}"
+      ENABLE_CANVAS_SYNC: "${env://ENABLE_CANVAS_SYNC}"
+
+  # Memory - Persistent knowledge graph for long-term memory
+  memory:
+    command: npx
+    args:
+      - "-y"
+      - "@modelcontextprotocol/server-memory"
+
+# ============================================================
+# OPTIONAL SERVERS (copy and configure as needed)
+# ============================================================
+# See README.md for more MCP servers:
+# - GitHub: ghcr.io/github/github-mcp-server
+# - SQLite: uvx mcp-server-sqlite
+# - Puppeteer: @anthropic-ai/puppeteer-mcp
+# - Brave Search: @anthropic-ai/brave-search-mcp
+# - Slack: @anthropic-ai/slack-mcp
+# - Google Drive: @anthropic-ai/gdrive-mcp
+# - PostgreSQL: @anthropic-ai/postgres-mcp
+# - Sentry: @anthropic-ai/sentry-mcp

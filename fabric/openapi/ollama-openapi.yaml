@@ -1,0 +1,596 @@
+openapi: 3.0.3
+info:
+  title: Ollama Local API (Auto-generated OpenAPI)
+  description: "OpenAPI spec generated from Ollama docs: endpoints for model management, generation, chat, embeddings, blobs and version."
+  version: "1.0.0"
+servers:
+  - url: "http://{host}:{port}"
+    variables:
+      host:
+        default: "localhost"
+      port:
+        default: "11434"
+tags:
+  - name: generate
+    description: Generation and chat endpoints
+  - name: models
+    description: Model management (list, create, pull, push, copy, delete, show)
+  - name: blobs
+    description: Blob upload/check
+  - name: health
+    description: Version and runtime info
+paths:
+  /api/generate:
+    post:
+      tags: [generate]
+      summary: Generate a completion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateRequest'
+      responses:
+        '200':
+          description: Streaming or single generation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateResponse'
+  /api/chat:
+    post:
+      tags: [generate]
+      summary: Generate a chat completion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Streaming or single chat response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+  /api/create:
+    post:
+      tags: [models]
+      summary: Create a model (from model, GGUF or safetensors)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateModelRequest'
+      responses:
+        '200':
+          description: Stream of status objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusStream'
+  /api/tags:
+    get:
+      tags: [models]
+      summary: List local models
+      responses:
+        '200':
+          description: Local models
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelListResponse'
+  /api/show:
+    post:
+      tags: [models]
+      summary: Show model information
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                verbose:
+                  type: boolean
+      responses:
+        '200':
+          description: Detailed model information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShowResponse'
+  /api/copy:
+    post:
+      tags: [models]
+      summary: Copy a model
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CopyRequest'
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Source not found
+  /api/delete:
+    delete:
+      tags: [models]
+      summary: Delete a model
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteRequest'
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          description: Not found
+  /api/pull:
+    post:
+      tags: [models]
+      summary: Pull (download) a model from the Ollama library
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PullRequest'
+      responses:
+        '200':
+          description: Stream or single success object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusStream'
+  /api/push:
+    post:
+      tags: [models]
+      summary: Push a model to a model library
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PushRequest'
+      responses:
+        '200':
+          description: Stream or single success object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusStream'
+  /api/blobs/{digest}:
+    head:
+      tags: [blobs]
+      summary: Check if a blob exists
+      parameters:
+        - name: digest
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Blob exists
+        '404':
+          description: Blob not found
+    post:
+      tags: [blobs]
+      summary: Upload a blob
+      parameters:
+        - name: digest
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad request (digest mismatch)
+  /api/embed:
+    post:
+      tags: [generate]
+      summary: Generate embeddings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbedRequest'
+      responses:
+        '200':
+          description: Embeddings result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbedResponse'
+  /api/embeddings:
+    post:
+      tags: [generate]
+      summary: (deprecated) Generate embeddings (superseded by /api/embed)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddingsRequest'
+      responses:
+        '200':
+          description: Embedding
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddingsResponse'
+  /api/ps:
+    get:
+      tags: [models]
+      summary: List running models (loaded in memory)
+      responses:
+        '200':
+          description: Running models
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelListResponse'
+  /api/version:
+    get:
+      tags: [health]
+      summary: Server version
+      responses:
+        '200':
+          description: Version info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: string
+components:
+  schemas:
+    GenerateRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        prompt:
+          type: string
+        suffix:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+            format: byte
+        think:
+          type: boolean
+        format:
+          oneOf:
+            - type: string
+            - type: object
+        options:
+          type: object
+          additionalProperties: true
+        system:
+          type: string
+        template:
+          type: string
+        stream:
+          type: boolean
+          default: true
+        raw:
+          type: boolean
+        keep_alive:
+          type: string
+        context:
+          type: array
+          items:
+            type: integer
+    GenerateResponse:
+      type: object
+      properties:
+        model:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        response:
+          type: string
+        done:
+          type: boolean
+        done_reason:
+          type: string
+        context:
+          type: array
+          items:
+            type: integer
+        total_duration:
+          type: integer
+        load_duration:
+          type: integer
+        prompt_eval_count:
+          type: integer
+        eval_count:
+          type: integer
+    Message:
+      type: object
+      properties:
+        role:
+          type: string
+          enum: [system, user, assistant, tool]
+        content:
+          type: string
+        thinking:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+            format: byte
+        tool_calls:
+          type: array
+          items:
+            type: object
+        tool_name:
+          type: string
+    ChatRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        tools:
+          type: array
+          items:
+            type: object
+        think:
+          type: boolean
+        format:
+          oneOf:
+            - type: string
+            - type: object
+        options:
+          type: object
+          additionalProperties: true
+        stream:
+          type: boolean
+          default: true
+        keep_alive:
+          type: string
+    ChatResponse:
+      type: object
+      properties:
+        model:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        message:
+          type: object
+          properties:
+            role:
+              type: string
+            content:
+              type: string
+            images:
+              type: array
+              items:
+                type: string
+        done:
+          type: boolean
+        done_reason:
+          type: string
+        total_duration:
+          type: integer
+    CreateModelRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        from:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            type: string
+        adapters:
+          type: object
+          additionalProperties:
+            type: string
+        template:
+          type: string
+        license:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        system:
+          type: string
+        parameters:
+          type: object
+          additionalProperties: true
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        stream:
+          type: boolean
+        quantize:
+          type: string
+    StatusStream:
+      type: object
+      properties:
+        status:
+          type: string
+        digest:
+          type: string
+        total:
+          type: integer
+        completed:
+          type: integer
+    ModelSummary:
+      type: object
+      properties:
+        name:
+          type: string
+        model:
+          type: string
+        modified_at:
+          type: string
+          format: date-time
+        size:
+          type: integer
+        digest:
+          type: string
+        details:
+          type: object
+          properties:
+            parent_model:
+              type: string
+            format:
+              type: string
+            family:
+              type: string
+            families:
+              type: array
+              items:
+                type: string
+            parameter_size:
+              type: string
+            quantization_level:
+              type: string
+        expires_at:
+          type: string
+          format: date-time
+        size_vram:
+          type: integer
+    ModelListResponse:
+      type: object
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelSummary'
+    ShowResponse:
+      type: object
+      properties:
+        modelfile:
+          type: string
+        parameters:
+          type: string
+        template:
+          type: string
+        details:
+          $ref: '#/components/schemas/ModelSummary'
+        model_info:
+          type: object
+          additionalProperties: true
+        capabilities:
+          type: array
+          items:
+            type: string
+    CopyRequest:
+      type: object
+      properties:
+        source:
+          type: string
+        destination:
+          type: string
+    DeleteRequest:
+      type: object
+      properties:
+        model:
+          type: string
+    PullRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        insecure:
+          type: boolean
+        stream:
+          type: boolean
+    PushRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        insecure:
+          type: boolean
+        stream:
+          type: boolean
+    EmbedRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        input:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        truncate:
+          type: boolean
+        options:
+          type: object
+          additionalProperties: true
+        keep_alive:
+          type: string
+        dimensions:
+          type: integer
+    EmbedResponse:
+      type: object
+      properties:
+        model:
+          type: string
+        embeddings:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+        total_duration:
+          type: integer
+        load_duration:
+          type: integer
+        prompt_eval_count:
+          type: integer
+    EmbeddingsRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        prompt:
+          type: string
+        options:
+          type: object
+          additionalProperties: true
+    EmbeddingsResponse:
+      type: object
+      properties:
+        embedding:
+          type: array
+          items:
+            type: number

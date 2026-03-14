@@ -1,0 +1,52 @@
+# Font families (regular, bold, italic, bold-italic)
+font-family = JetBrainsMonoNL Nerd Font Mono
+font-family-bold = JetBrainsMonoNL NFM Bold
+font-family-italic = JetBrainsMonoNL NFM Italic
+font-family-bold-italic = JetBrainsMonoNL NFM Bold Italic
+
+# Engrosar la fuente en macOS para que la fuente normal no se vea tan fina
+# font-thicken está soportado en macOS
+font-thicken = true
+# Fuerza de engrosado (0-255). Ajusta según prefieras: 40-80 es razonable.
+font-thicken-strength = 80
+
+# theme = catppuccin-mocha.conf
+theme = dark:Rose Pine,light:Rose Pine Dawn
+
+# Quitar la barra de título nativa de macOS para un look más limpio
+macos-titlebar-style = hidden
+
+# Un poco de padding (margen) interno para que el texto no toque los bordes
+window-padding-x = 10
+window-padding-y = 10
+
+# Opcional: Transparencia y blur (efecto "frosted glass")
+# background-opacity = 0.95
+# background-blur-radius = 20
+
+# Ocultar el ratón cuando escribes (para que no estorbe)
+mouse-hide-while-typing = true
+
+
+# Copiar automáticamente al seleccionar texto (estilo Linux/iTerm2)
+copy-on-select = true
+
+# Estilo del cursor (block, bar, underline) y parpadeo
+cursor-style = block
+cursor-style-blink = true
+
+# Habilita integración con la shell (para que, por ejemplo, puedas hacer scroll con el ratón
+# correctamente en aplicaciones interactivas si no usas tmux)
+shell-integration = zsh
+
+# =============================================
+# TMUX KEYBINDINGS
+# =============================================
+# Cmd+Shift+W sends Ctrl+W to tmux (closes window)
+keybind = cmd+shift+w=text:\x03w
+
+# Ctrl+Cmd+N creates new tmux session (sends Alt+Shift+N to tmux)
+keybind = ctrl+cmd+n=text:\x1bN
+
+# Optional: Cmd+Shift+X to close pane (sends Ctrl+Shift+X)
+# keybind = cmd+shift+x=text:\x03X

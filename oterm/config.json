@@ -1,0 +1,9 @@
+{
+  "splash-screen": false,
+  "keymap": {
+    "next.chat": "ctrl+tab",
+    "prev.chat": "ctrl+shift+tab",
+    "quit": "ctrl+q",
+    "newline": "shift+enter"
+  }
+}

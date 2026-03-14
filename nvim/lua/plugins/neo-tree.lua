@@ -24,9 +24,11 @@ return {
             window = { position = "right", width = 35 },
         })
 
-        -- Keymap: leader+e para alternar
-        vim.keymap.set("n", "<leader>e", function()
+        local function toggle_neotree()
             require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
-        end, { desc = "Toggle Neo-tree" })
+        end
+
+        -- Keymap: Cmd+B para alternar (estilo VS Code)
+        vim.keymap.set({ "n", "i", "v" }, "<D-b>", toggle_neotree, { desc = "Toggle Neo-tree" })
     end,
 }

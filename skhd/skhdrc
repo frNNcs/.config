@@ -1,5 +1,8 @@
 # -- Changing Window Focus --
 
+# Focus Space 5 (skhd) - REMOVED (Handled by macOS native shortcuts)
+# ctrl - 5 : yabai -m space --focus 5
+
 # change window focus within space
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
@@ -52,6 +55,10 @@ ctrl + alt - l : yabai -m window --warp east
 shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
 shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
 
+# Mover ventanas flotantes con el mouse
+# alt - button1 : yabai -m window --drag
+
+
 
 # move window to prev and next space
 shift + alt - p : yabai -m window --space prev;
@@ -83,3 +90,8 @@ ctrl + alt - r : yabai --restart-service
 
 # toggle padding para el espacio actual
 ctrl + alt - p : yabai -m space --toggle padding
+
+# -- Space Layout Configuration --
+
+# Toggle layout del espacio actual entre bsp (mosaico) y float (flotante)
+shift + alt - f : yabai -m space --layout $(yabai -m query --spaces --space | /opt/homebrew/bin/jq -r 'if .type == "bsp" then "float" else "bsp" end')

@@ -1,0 +1,92 @@
+{
+  "model": "ollama:granite4:7b-a1b-h",
+  "max-tokens": 8192,
+  "temperature": 0.7,
+  "stream": true,
+  "mcpServers": {
+    "filesystem": {
+      "type": "builtin",
+      "name": "fs",
+      "options": {
+        "allowed_directories": [
+          "${env://HOME}/projects",
+          "${env://HOME}/Documents",
+          "/tmp"
+        ]
+      },
+      "allowedTools": [
+        "read_file",
+        "write_file",
+        "list_directory",
+        "get_file_info",
+        "search_files"
+      ]
+    },
+    "bash": {
+      "type": "builtin",
+      "name": "bash"
+    },
+    "tasks": {
+      "type": "builtin",
+      "name": "todo"
+    },
+    "web": {
+      "type": "builtin",
+      "name": "http"
+    },
+    "obsidian": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${env://HOME}/projects/mcp/obsidian-mcp",
+        "run",
+        "mcp-obsidian"
+      ]
+    },
+    "markitdown": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${env://HOME}/projects/mcp/markitdown/packages/markitdown-mcp",
+        "run",
+        "markitdown-mcp"
+      ],
+      "cwd": "${env://HOME}/projects/mcp/markitdown",
+      "env": {
+        "MARKITDOWN_ENABLE_PLUGINS": "false"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--extension"
+      ],
+      "env": {
+        "PLAYWRIGHT_MCP_EXTENSION_TOKEN": "8krK21Pn4-ebEwDOymDF9bNaKfLuGLFQ3PrBjYAZNdk"
+      }
+    },
+    "excalidraw": {
+      "command": "node",
+      "args": [
+        "dist/index.js"
+      ],
+      "cwd": "${env://HOME}/projects/mcp/excalidraw-mcp",
+      "env": {
+        "EXPRESS_SERVER_URL": "https://excalidraw-mcp.frnn.dev",
+        "ENABLE_CANVAS_SYNC": "true"
+      }
+    },
+    "figma-desktop": {
+      "type": "http",
+      "url": "http://127.0.0.1:3845/mcp"
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    }
+  }
+}

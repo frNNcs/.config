@@ -20,3 +20,9 @@ require('lazy').setup({
 -- Optional: basic Neovim UI tweaks
 vim.o.termguicolors = true
 vim.o.background = 'dark'
+
+-- Disable default mode status and ruler (since we use a statusline plugin)
+vim.opt.showmode = false
+vim.opt.ruler = false
+vim.opt.showcmd = false
+vim.opt.cmdheight = 0

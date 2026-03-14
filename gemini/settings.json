@@ -1,0 +1,148 @@
+{
+  "ide": {
+    "enabled": true,
+    "hasSeenNudge": true
+  },
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--extension"
+      ],
+      "env": {
+        "PLAYWRIGHT_MCP_EXTENSION_TOKEN": "8krK21Pn4-ebEwDOymDF9bNaKfLuGLFQ3PrBjYAZNdk"
+      },
+      "description": "Playwright - Browser automation via accessibility tree"
+    },
+    "obsidian": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/francisco/projects/mcp/obsidian-mcp",
+        "run",
+        "mcp-obsidian"
+      ],
+      "description": "Obsidian Enhanced MCP - Vault integration"
+    },
+    "excalidraw": {
+      "command": "/opt/homebrew/opt/node@22/bin/node",
+      "args": [
+        "dist/index.js"
+      ],
+      "cwd": "/Users/francisco/projects/mcp/excalidraw-mcp",
+      "env": {
+        "EXPRESS_SERVER_URL": "https://excalidraw-mcp.frnn.dev/",
+        "ENABLE_CANVAS_SYNC": "true"
+      },
+      "description": "Excalidraw MCP - Visual diagramming server"
+    },
+    "markitdown": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/francisco/projects/mcp/markitdown/packages/markitdown-mcp",
+        "run",
+        "markitdown-mcp"
+      ],
+      "cwd": "/Users/francisco/projects/mcp/markitdown",
+      "env": {
+        "MARKITDOWN_ENABLE_PLUGINS": "false"
+      },
+      "description": "MarkItDown MCP - Markdown conversion utilities"
+    },
+    "syncthing-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/francisco/projects/mcp/syncthing-mcp",
+        "run",
+        "python",
+        "-m",
+        "syncthing_mcp.server"
+      ],
+      "cwd": "/Users/francisco/projects/mcp/syncthing-mcp",
+      "env": {
+        "SYNCTHING_BASE_URL": "http://localhost:8384",
+        "SYNCTHING_API_KEY": "hHvPeVRHxsAvupbjNXRDU4HbN7gktfmS"
+      },
+      "description": "Syncthing MCP - File sync integration"
+    },
+    "context7": {
+      "httpUrl": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "ctx7sk-7ddfc206-508c-4cc5-b55b-99af837961fa"
+      },
+      "description": "Context7 - Library documentation integration"
+    },
+    "ollama-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/francisco/projects/ollama-mcp",
+        "run",
+        "server.py"
+      ],
+      "env": {
+        "OLLAMA_API_URL": "http://192.168.1.80:11434"
+      },
+      "description": "Ollama MCP - Local LLM integration"
+    },
+    "awesome-copilot": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "ghcr.io/microsoft/mcp-dotnet-samples/awesome-copilot:latest"
+      ],
+      "description": "Awesome Copilot - .NET MCP samples (disabled by default)"
+    },
+    "figma-desktop": {
+      "httpUrl": "http://127.0.0.1:3845/mcp",
+      "description": "Figma Desktop - Design tool integration (disabled by default)"
+    }
+  },
+  "model": {
+    "name": "gemini-2.5-pro"
+  },
+  "general": {
+    "preferredEditor": "vscode",
+    "previewFeatures": true,
+    "vimMode": false,
+    "disableAutoUpdate": false,
+    "enableAutoUpdate": true,
+    "sessionRetention": {
+      "warningAcknowledged": true,
+      "enabled": true,
+      "maxAge": "120d"
+    }
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "theme": "GitHub",
+    "showMemoryUsage": true,
+    "showLineNumbers": true,
+    "useFullWidth": true
+  },
+  "tools": {
+    "shell": {
+      "showColor": true
+    },
+    "sandbox": false,
+    "autoAccept": false
+  },
+  "privacy": {
+    "usageStatisticsEnabled": true
+  },
+  "mcp": {
+    "excluded": [
+      "awesome-copilot",
+      "figma-desktop"
+    ]
+  }
+}

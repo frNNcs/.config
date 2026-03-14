@@ -7,3 +7,62 @@ raycast/config.json
 # Tmux Plugins
 tmux/plugins/*
 !tmux/plugins/tpm/
+
+# Gemini configuration (local copies only; do not commit credentials)
+/gemini/oauth_creds.json
+/gemini/installation_id
+/gemini/user_id
+/gemini/state.json
+/gemini/tmp/
+.android/*
+.android
+vscode-data/*
+gemini/antigravity/*
+# --- Seguridad y Secretos ---
+.env
+.env.*
+**/credentials.json
+**/oauth_creds.json
+
+# --- Entornos Virtuales y Dependencias ---
+.venv/
+venv/
+**/node_modules/
+**/__pycache__/
+.python-version
+
+# --- Caché y Configuración de Herramientas ---
+configstore/
+.copilot/logs/
+.opencode/memory/
+**/bun.lock
+
+# --- Archivos de Sistema y Logs ---
+**/.DS_Store
+**/*.log
+
+# --- Bases de Datos Locales (Caché/Estado) ---
+*.db-journal
+*.db-wal
+syncthing/index-v2/
+oterm/store.db
+
+# --- Directorios de Datos de Aplicaciones ---
+raycast/
+gcloud/logs/
+gcloud/virtenv/
+
+# --- Gemini History ---
+gemini/history/
+
+# --- Secretos detectados por GitHub ---
+gcloud/application_default_credentials.json
+gcloud/legacy_credentials/
+opencode/opencode.json
+opencode/opencode.json.bak
+
+# --- Fabric secrets ---
+fabric/.env
+
+# --- Gemini browser profile (datos de aplicación, no config) ---
+gemini/antigravity-browser-profile/

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (192.168.1.80)",
+      "options": {
+        "baseURL": "http://192.168.1.80:11434/v1"
+      },
+      "models": {
+        "functiongemma:latest": {
+          "name": "functiongemma:latest",
+          "tool_call": true
+        },
+        "qwen3:4b": {
+          "name": "qwen3:4b",
+          "tool_call": true
+        },
+        "qwen3:8b": {
+          "name": "qwen3:8b",
+          "tool_call": true
+        },
+        "llama3.1:8b": {
+          "name": "llama3.1:8b",
+          "tool_call": true
+        },
+        "granite4:7b-a1b-h": {
+          "name": "granite4:7b-a1b-h",
+          "tool_call": true
+        },
+        "phi4-mini:3.8b-q8_0": {
+          "name": "phi4-mini:3.8b-q8_0",
+          "tool_call": true
+        },
+        "ministral-3:8b": {
+          "name": "ministral-3:8b",
+          "tool_call": true
+        },
+        "qwen3-vl:8b": {
+          "name": "qwen3-vl:8b",
+          "tool_call": true
+        },
+        "deepseek-r1:8b-llama-distill-q4_K_M": {
+          "name": "deepseek-r1:8b-llama-distill-q4_K_M",
+          "tool_call": false
+        }
+      }
+    }
+  },
+  "model": "opencode/minimax-m2.5-free",
+  "small_model": "ollama/functiongemma:latest",
+  "permission": {
+    "excalidraw_*": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "read": "allow",
+    "list": "allow",
+    "todowrite": "allow",
+    "todoread": "allow",
+    "websearch": "allow",
+    "codesearch": "allow",
+    "webfetch": "allow",
+    "lsp": "allow",
+    "question": "allow",
+    "bash": "allow",
+    "edit": "allow",
+    "write": "allow",
+    "patch": "allow",
+    "multiedit": "allow",
+    "task": "allow",
+    "skill": "allow",
+    "external_directory": "allow",
+    "doom_loop": "allow"
+  },
+  "tools": {
+    "excalidraw_*": true,
+    "write": false,
+    "bash": true,
+    "webfetch": true,
+    "read": true,
+    "edit": false,
+    "grep": true,
+    "glob": true,
+    "list": true,
+    "patch": false,
+    "multiedit": false,
+    "task": true,
+    "todowrite": true,
+    "todoread": true,
+    "websearch": true,
+    "codesearch": true,
+    "skill": true,
+    "lsp": true,
+    "question": true
+  }
+}

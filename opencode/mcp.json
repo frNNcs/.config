@@ -1,0 +1,120 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@playwright/mcp@latest",
+        "--extension"
+      ],
+      "environment": {
+        "PLAYWRIGHT_MCP_EXTENSION_TOKEN": "{env:PLAYWRIGHT_MCP_EXTENSION_TOKEN}"
+      },
+      "enabled": true
+    },
+    "obsidian": {
+      "type": "local",
+      "command": [
+        "/Users/francisco/.local/bin/uv",
+        "--directory",
+        "/Users/francisco/projects/mcp/obsidian-mcp",
+        "run",
+        "mcp-obsidian"
+      ],
+      "environment": {
+        "OBSIDIAN_API_KEY": "{env:OBSIDIAN_API_KEY}",
+        "OBSIDIAN_HOST": "{env:OBSIDIAN_HOST}",
+        "OBSIDIAN_PORT": "{env:OBSIDIAN_PORT}",
+        "OBSIDIAN_PROTOCOL": "{env:OBSIDIAN_PROTOCOL}"
+      },
+      "enabled": true
+    },
+    "excalidraw": {
+      "type": "local",
+      "command": [
+        "node",
+        "/Users/francisco/projects/mcp/excalidraw-mcp/dist/index.js"
+      ],
+      "environment": {
+        "EXPRESS_SERVER_URL": "{env:EXPRESS_SERVER_URL}",
+        "ENABLE_CANVAS_SYNC": "{env:ENABLE_CANVAS_SYNC}"
+      }
+    },
+    "markitdown": {
+      "type": "local",
+      "command": [
+        "/Users/francisco/.local/bin/uv",
+        "--directory",
+        "/Users/francisco/projects/mcp/markitdown/packages/markitdown-mcp",
+        "run",
+        "markitdown-mcp"
+      ],
+      "environment": {
+        "MARKITDOWN_ENABLE_PLUGINS": "{env:MARKITDOWN_ENABLE_PLUGINS}"
+      }
+    },
+    "syncthing-mcp": {
+      "type": "local",
+      "command": [
+        "/Users/francisco/.local/bin/uv",
+        "--directory",
+        "/Users/francisco/projects/mcp/syncthing-mcp",
+        "run",
+        "python",
+        "-m",
+        "syncthing_mcp.server"
+      ],
+      "environment": {
+        "SYNCTHING_BASE_URL": "{env:SYNCTHING_BASE_URL}",
+        "SYNCTHING_API_KEY": "{env:SYNCTHING_API_KEY}"
+      }
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+      }
+    },
+    "ollama-mcp": {
+      "type": "local",
+      "command": [
+        "/Users/francisco/.local/bin/uv",
+        "--directory",
+        "/Users/francisco/projects/ollama-mcp",
+        "run",
+        "server.py"
+      ],
+      "environment": {
+        "OLLAMA_API_URL": "{env:OLLAMA_API_URL}"
+      }
+    },
+    "awesome-copilot": {
+      "type": "local",
+      "command": [
+        "docker",
+        "run",
+        "-i",
+        "--rm",
+        "ghcr.io/microsoft/mcp-dotnet-samples/awesome-copilot:latest"
+      ],
+      "enabled": false
+    },
+    "mcp-atlassian": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "mcp-atlassian"
+      ],
+      "environment": {
+        "JIRA_URL": "{env:JIRA_URL}",
+        "JIRA_USERNAME": "{env:JIRA_USERNAME}",
+        "JIRA_API_TOKEN": "{env:JIRA_API_TOKEN}",
+        "CONFLUENCE_URL": "{env:CONFLUENCE_URL}",
+        "CONFLUENCE_USERNAME": "{env:CONFLUENCE_USERNAME}",
+        "CONFLUENCE_API_TOKEN": "{env:CONFLUENCE_API_TOKEN}"
+      }
+    }
+  }
+}

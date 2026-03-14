@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+# Loads variables from ~/.config/.env and exports them for POSIX shells
+ENV_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/.env"
+if [ -f "$ENV_FILE" ]; then
+  # Export all variable assignments in the file
+  set -a
+  # shellcheck disable=SC1090
+  . "$ENV_FILE"
+  set +a
+fi

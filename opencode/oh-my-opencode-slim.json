@@ -1,0 +1,125 @@
+{
+  "preset": "dynamic",
+  "scoringEngineVersion": "v2",
+  "balanceProviderUsage": true,
+  "background": {
+    "maxConcurrentStarts": 6
+  },
+  "disabled_mcps": [],
+  "tmux": {
+    "enabled": true,
+    "layout": "main-vertical",
+    "main_pane_size": 60
+  },
+  "presets": {
+    "dynamic": {
+      "orchestrator": {
+        "model": "github-copilot/claude-sonnet-4.6",
+        "variant": "medium",
+        "skills": [
+          "find-skills"
+        ],
+        "mcps": [
+          "websearch"
+        ]
+      },
+      "oracle": {
+        "model": "github-copilot/gpt-5.4",
+        "variant": "high",
+        "skills": [
+          "requesting-code-review"
+        ],
+        "mcps": []
+      },
+      "designer": {
+        "model": "google/gemini-3.1-pro-preview-customtools",
+        "variant": "medium",
+        "skills": [
+          "agent-browser",
+          "mermaid-visualizer",
+          "excalidraw-diagram",
+          "obsidian-canvas-creator",
+          "json-canvas"
+        ],
+        "mcps": [
+          "playwright",
+          "excalidraw",
+          "obsidian"
+        ]
+      },
+      "explorer": {
+        "model": "google/gemini-3-flash-preview",
+        "variant": "low",
+        "skills": [
+          "cartography",
+          "ssh-session"
+        ],
+        "mcps": []
+      },
+      "librarian": {
+        "model": "google/gemini-3.1-pro-preview",
+        "variant": "medium",
+        "skills": [
+          "defuddle",
+          "notebooklm"
+        ],
+        "mcps": [
+          "websearch",
+          "context7",
+          "grep_app",
+          "markitdown"
+        ]
+      },
+      "fixer": {
+        "model": "github-copilot/gpt-5.3-codex",
+        "variant": "low",
+        "skills": [
+          "simplify"
+        ],
+        "mcps": []
+      }
+    }
+  },
+  "fallback": {
+    "enabled": true,
+    "timeoutMs": 10000,
+    "chains": {
+      "orchestrator": [
+        "github-copilot/claude-sonnet-4.6",
+        "github-copilot/gpt-5.3-codex",
+        "google/gemini-3-flash-preview",
+        "opencode/gpt-5-nano"
+      ],
+      "oracle": [
+        "github-copilot/gpt-5.4",
+        "github-copilot/claude-opus-4.6",
+        "google/gemini-3.1-pro-preview",
+        "opencode/gpt-5"
+      ],
+      "designer": [
+        "google/gemini-3.1-pro-preview-customtools",
+        "github-copilot/claude-sonnet-4.6",
+        "google/gemini-3-flash-preview",
+        "opencode/gemini-3-pro"
+      ],
+      "explorer": [
+        "google/gemini-3-flash-preview",
+        "github-copilot/gemini-3-flash-preview",
+        "ollama/qwen2.5-coder:3b",
+        "opencode/gpt-5-nano"
+      ],
+      "librarian": [
+        "google/gemini-3.1-pro-preview",
+        "github-copilot/claude-sonnet-4.6",
+        "google/gemini-3-flash-preview",
+        "opencode/gemini-3.1-pro"
+      ],
+      "fixer": [
+        "github-copilot/gpt-5.3-codex",
+        "google/gemini-3-flash-preview",
+        "github-copilot/gpt-5.1-codex-mini",
+        "ollama/qwen2.5-coder:3b"
+      ]
+    }
+  }
+}

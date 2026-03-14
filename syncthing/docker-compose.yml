@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  syncthing:
+    image: syncthing/syncthing:latest
+    container_name: syncthing-mac
+    hostname: syncthing-mac
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      # Configuración de Syncthing
+      - ${HOME}/.config/syncthing:/var/syncthing/config
+      # Carpeta de Obsidian (ajusta según tu ubicación real)
+      - ${HOME}/obsidian:/var/syncthing/obsidian
+    ports:
+      - "8386:8384"      # Web UI
+      - "22000:22000/tcp" # Sync TCP
+      - "22000:22000/udp" # Sync UDP
+      - "21027:21027/udp" # Local discovery
+    restart: unless-stopped
+    networks:
+      - syncthing-network
+
+networks:
+  syncthing-network:
+    driver: bridge

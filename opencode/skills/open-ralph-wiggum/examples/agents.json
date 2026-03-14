@@ -1,0 +1,18 @@
+{
+  "opencode": {
+    "binary": "opencode",
+    "args": []
+  },
+  "opencode-local": {
+    "binary": "opencode",
+    "args": ["--model", "ollama/qwen2.5-coder:14b"]
+  },
+  "claude-fast": {
+    "binary": "claude",
+    "args": ["-p", "claude-3-5-haiku-20241022"]
+  },
+  "copilot-cli": {
+    "binary": "gh",
+    "args": ["copilot", "suggest"]
+  }
+}
