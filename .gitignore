@@ -49,8 +49,7 @@ oterm/store.db
 
 # --- Directorios de Datos de Aplicaciones ---
 raycast/
-gcloud/logs/
-gcloud/virtenv/
+gcloud/
 
 # --- Gemini History ---
 gemini/history/
